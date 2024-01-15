@@ -1,34 +1,50 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router';
+import { useCookies} from 'vue3-cookies'
+import { decodeCredential, googleLogout} from 'vue3-google-login'
+import NewActivity from '@/components/NewActivity.vue'
 
-const account = ref({})
+
+const { cookies } = useCookies()
+
+const accountsBe = ref({})
+const isLoggedIn = ref(false)
+let userName = ''
+
+const fetchData = () => {
+    fetch(`${import.meta.env.VITE_API_URL}/activities`)
+    .then( response => response.json() )
+    .then( result => {
+        accountsBe.value = result
+        console.log(accountsBe.value)
+    } )
+}
+
+const checkSession = () => {
+    if( cookies.isKey('user_session') ) {
+        isLoggedIn.value = true
+        const userData = decodeCredential(cookies.get('user_session'))
+        userName = userData.given_name
+    }
+}
 
 onMounted(() => {
-    const route = useRoute()
-
-    fetch(`${import.meta.env.VITE_API_URL}/account/${route.params.id}`)
-    .then(response => response.json())
-    .then( result => {
-        account.value = result
-        console.log(account.value)
-    })
-    .catch(err => console.error(err))
+  checkSession()  
+  fetchData()
 })
+
 </script>
 
 <template>
-    <h1>Testing Testing</h1>
-    <h2> Hello Tim </h2>
-    <div class="days-list">
-    <ul>
-      <li>Monday</li>
-      <li>Tuesday</li>
-      <li>Wednesday</li>
-      <li>Thursday</li>
-      <li>Friday</li>
-      <li>Saturday</li>
-      <li>Sunday</li>
-    </ul>
-  </div>
+    <h1>Your main account page!</h1>
+    <h2> User Name Here from Google </h2>
+  <ul>
+    <li v-for="account in accountsBe" :key="account._id">
+            <RouterLink :to="'/account/' + account._id">{{ account.activity }} - {{ account.day }}</RouterLink> &nbsp; 
+            <!-- <button @click="deleteBook(book._id)">Delete Book</button> &nbsp; 
+            <RouterLink :to="'/book/update/' + book._id">Edit Book</RouterLink> -->
+        </li>
+    <NewActivity :fetchData="fetchData"/>
+  </ul>
+
 </template>

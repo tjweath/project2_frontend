@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginView from '@/views/LoginView.vue'
 import AccountView from '@/views/AccountView.vue'
+import NewActivity from '@/components/NewActivity.vue'
+import SingleActivityView from '../views/SingleActivityView.vue'
 
 
 const router = createRouter({
@@ -21,6 +23,16 @@ const router = createRouter({
       path: '/account',
       name: 'account',
       component: AccountView
+    },
+    {
+      path: '/account/add',
+      name: 'activity',
+      component: NewActivity
+    },
+    {
+      path: '/activity/:id',
+      name: 'singleactivity',
+      component: SingleActivityView
     },
   ]
 })
