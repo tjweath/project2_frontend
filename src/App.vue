@@ -6,14 +6,11 @@ import { RouterView } from 'vue-router'
   <header>
     <div class="wrapper">
       <nav>
-        <!-- <RouterLink to="/login">Login/Logout</RouterLink> &nbsp;
-        <RouterLink to="/">Home</RouterLink> &nbsp;
-        <RouterLink to="/book">Books</RouterLink> &nbsp; -->
-        <!-- <RouterLink to="/author">Author List</RouterLink>  -->
+        <RouterLink to="/login">Login/Logout</RouterLink> &nbsp;
+        <RouterLink to="/activity">Home</RouterLink> &nbsp;
       </nav>
     </div>
   </header>
-
   <RouterView />
 </template>
 

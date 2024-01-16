@@ -1,9 +1,15 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router';
+import { RouterLink } from 'vue-router';
+import { useCookies} from 'vue3-cookies'
+import { decodeCredential, googleLogout} from 'vue3-google-login'
 import NewActivity from '@/components/NewActivity.vue';
 
+const { cookies } = useCookies()
+
 const activityBe = ref({})
+const isLoggedIn = ref(false)
+let userName = ''
 
 const fetchData = async () => {
   try {
@@ -36,23 +42,36 @@ function deleteActivity(activityId) {
     .catch(err => console.error(err))
 }
 
+const checkSession = () => {
+    if( cookies.isKey('user_session') ) {
+        isLoggedIn.value = true
+        const userData = decodeCredential(cookies.get('user_session'))
+        userName = userData.given_name
+    }
+}
+
 onMounted(() => {
     fetchData()
+    checkSession()
 })
+
 
 </script>
 
 <template>
-   <h1>Activity List</h1>
-<ul>
+  <div v-if="isLoggedIn">
+    <h2>SweatSquad: {{ userName }}</h2> &nbsp;
+  </div>
+  <ul>
     <li v-for="activity in activityBe" :key="activity._id">
-            <RouterLink :to="'/activity/' + activity._id">{{ activity.activity }} - {{activity.day}} </RouterLink> &nbsp;
-            <button @click="deleteActivity(activity._id)">Delete Activity</button> &nbsp; 
-            <RouterLink :to="'/activity/update/' + activity._id">Edit Activity</RouterLink>
-        </li>
-    </ul>
-    <hr>
-    <div >
-    <NewActivity />
-    </div>
+      <RouterLink :to="'/activity/' + activity._id">{{ activity.activity }}: {{activity.day}} </RouterLink> &nbsp;
+      <button v-if="isLoggedIn" @click="deleteActivity(activity._id)">Delete</button> &nbsp; 
+      <RouterLink v-if="isLoggedIn" :to="'/activity/update/' + activity._id">Edit</RouterLink>
+    </li>
+  </ul>
+  <hr>
+  <div>
+    <NewActivity v-if="isLoggedIn" :fetchData="fetchData"/>
+  </div>
 </template>
+

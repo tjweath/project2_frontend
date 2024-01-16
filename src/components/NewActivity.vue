@@ -5,7 +5,7 @@ const {fetchData} = defineProps(['fetchData'])
 const activity = {
     activity: '',
     day: '',
-    completed: false
+    // completed: false
 }
 
 function addActivity() {
@@ -23,6 +23,7 @@ function addActivity() {
     .then(res => {
         activity.activity = ''
         activity.day = ''
+        fetchData()
         console.log(res);
     })
     .catch(err => console.error(err))
@@ -31,14 +32,16 @@ function addActivity() {
 </script>
 
 <template>
-    <h3>Add a new Activity</h3>
+    <h5>Add new activities here!</h5>
     <div class="activityForm">
-            <label for="activity"> Activity: *</label>
-            <input type="text" name="activity" placeholder="Activity" v-model="activity.activity" required>
+            <label for="activity">Activity: *</label>
+            <input type="text" name="activity" placeholder="Eg, Gym" v-model="activity.activity" required>
             <label for="day">Day *</label>
-            <input type="text" name="day" placeholder="Day" v-model="activity.day" required>
-            <label for="completed">completed *</label>
-            <input type="checkbox" name="completed" v-model="activity.completed" required>
-            <button @click="addActivity">Add Activity</button>
+            <input type="text" name="day" placeholder="Eg, Friday" v-model="activity.day" required>
+            <!-- <label for="completed">completed *</label>
+            <input type="checkbox" name="completed" v-model="activity.completed" required> -->
+            <button @click="addActivity">Add</button>
     </div>
 </template>
+
+

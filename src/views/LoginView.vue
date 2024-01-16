@@ -48,9 +48,9 @@ onMounted(checkSession)
 </script>
 
 <template>
-    <h1>Login</h1>
+    <h2>Welcome to SweatSquad</h2>
+    <h4>Elevate your fitness journey by monitoring your daily, weekly, and monthly activities!</h4>
     <div v-if="isLoggedIn">
-        <h2> Hello {{ userName }} </h2>
         <button @click="handleLogout"> Log Out</button>
     </div>
     <div v-else>
