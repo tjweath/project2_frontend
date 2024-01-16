@@ -4,11 +4,12 @@ const {fetchData} = defineProps(['fetchData'])
 
 const activity = {
     activity: '',
-    day: ''
+    day: '',
+    completed: false
 }
 
 function addActivity() {
-    if( activity.name === '' || activity.day === '' ){
+    if( activity.activity === '' || activity.day === '' ){
         alert('All values are required')
         return
     }
@@ -36,6 +37,8 @@ function addActivity() {
             <input type="text" name="activity" placeholder="Activity" v-model="activity.activity" required>
             <label for="day">Day *</label>
             <input type="text" name="day" placeholder="Day" v-model="activity.day" required>
+            <label for="completed">completed *</label>
+            <input type="checkbox" name="completed" v-model="activity.completed" required>
             <button @click="addActivity">Add Activity</button>
     </div>
 </template>
