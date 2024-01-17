@@ -45,7 +45,7 @@ onMounted(loadActivityData)
 </script>
 
 <template>
-    <h1>Edit Activity</h1>
+    <h2>Edit Activity</h2>
     <div class="activityForm">
             <label for="activity"> Activity: *</label>
             <input type="text" name="activity" placeholder="Activity" v-model="activity.activity" required>
@@ -53,6 +53,14 @@ onMounted(loadActivityData)
             <input type="text" author="day" placeholder="Day" v-model="activity.day" required>
             <!-- <label for="completed">completed *</label>
             <input type="checkbox" name="completed" v-model="activity.completed" required> -->
-            <button @click="updateActivity">Update Activity</button>
+            <button @click="updateActivity">Update</button>
     </div>
 </template>
+
+<style scoped>
+    h2 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 10px;
+    }
+</style>

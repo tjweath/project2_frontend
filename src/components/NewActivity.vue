@@ -1,15 +1,16 @@
 <script setup>
+import { ref } from 'vue';
 
 const {fetchData} = defineProps(['fetchData'])
 
-const activity = {
+const activity = ref({
     activity: '',
     day: '',
     // completed: false
-}
+})
 
 function addActivity() {
-    if( activity.activity === '' || activity.day === '' ){
+    if( activity.value.activity === '' || activity.value.day === '' ){
         alert('All values are required')
         return
     }
@@ -18,21 +19,21 @@ function addActivity() {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(activity)
+        body: JSON.stringify(activity.value)
     })
     .then(res => {
-        activity.activity = ''
-        activity.day = ''
         fetchData()
-        console.log(res);
+        console.log(res)
+        activity.value.activity = ''
+        activity.value.day = ''
     })
     .catch(err => console.error(err))
 }
 
+
 </script>
 
 <template>
-    <h5>Add new activities here!</h5>
     <div class="activityForm">
             <label for="activity">Activity: *</label>
             <input type="text" name="activity" placeholder="Eg, Gym" v-model="activity.activity" required>
