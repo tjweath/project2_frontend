@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { useCookies} from 'vue3-cookies'
 import { decodeCredential, googleLogout} from 'vue3-google-login'
-// import image from '@/assets/ss.png'
+import image from '@/assets/SS2.png'
 
 const { cookies } = useCookies()
 
@@ -51,7 +51,7 @@ onMounted(checkSession)
   <template>
     <div class="container">
       <div class="header">
-        <img src="../assets/SS2.png" alt="S_S" class="logo">
+        <img :src="image" alt="S_S" class="logo">
         <h2>Track your fitness journey by monitoring your regular activities</h2>
       </div>
   
