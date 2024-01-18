@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { useCookies} from 'vue3-cookies'
 import { decodeCredential, googleLogout} from 'vue3-google-login'
-import image from './assets/SS2.png'
+// import image from './assets/SS2.png'
 
 const { cookies } = useCookies()
 
