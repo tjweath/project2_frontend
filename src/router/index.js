@@ -6,7 +6,6 @@ import AllActivityView from '@/views/AllActivityView.vue'
 import SingleActivityView from '../views/SingleActivityView.vue'
 import ActivityEditView from '@/views/ActivityEditView.vue'
 
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [

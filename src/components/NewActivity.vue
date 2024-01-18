@@ -35,14 +35,23 @@ function addActivity() {
 
 <template>
     <div class="activityForm">
-            <label for="activity">Activity: *</label>
+            <label for="activity">Activity:</label>
             <input type="text" name="activity" placeholder="Eg, Gym" v-model="activity.activity" required>
-            <label for="day">Day *</label>
+            <label for="day">Day</label>
             <input type="text" name="day" placeholder="Eg, Friday" v-model="activity.day" required>
             <!-- <label for="completed">completed *</label>
             <input type="checkbox" name="completed" v-model="activity.completed" required> -->
             <button @click="addActivity">Add</button>
     </div>
 </template>
+
+<style scoped>
+
+.activityForm{
+    justify-content: center;
+    display: flex;
+}
+
+</style>
 
 
