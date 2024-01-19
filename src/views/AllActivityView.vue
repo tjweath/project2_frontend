@@ -4,6 +4,7 @@ import { RouterLink } from 'vue-router';
 import { useCookies } from 'vue3-cookies';
 import { decodeCredential, googleLogout } from 'vue3-google-login';
 import NewActivity from '@/components/NewActivity.vue';
+import imgURL from '../assets/SS2.png'
 
 const { cookies } = useCookies();
 
@@ -103,7 +104,7 @@ onMounted(() => {
   <div class="app-container">
     <div class="row">
       <div class="col-md-8">
-        <img src="@/assets/ss2.png" alt="S_S" class="logo">
+        <img :src="imgURL" alt="S_S" class="logo">
         <div v-if="isLoggedIn" class="header">
           <h2>Welcome to your account {{ userName }}!</h2>
           <div class="new-activity">

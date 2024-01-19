@@ -1,10 +1,22 @@
 <script setup>
 
+import imgURL from '../assets/SS2.png'
+
 </script>
 
 <template>
+  <div class="wrapper">
   <main>
-    <h1>Sweat_Squad</h1>
-    <h3>Track your fitness journey by monitoring your regular activities</h3>
+    <img :src="imgURL" alt="S_S" class="logo">
+    <h2></h2>
   </main>
+</div>
 </template>
+
+<style scoped>
+
+.logo {
+    width: 500px;
+
+  }
+</style>
