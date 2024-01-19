@@ -103,7 +103,7 @@ onMounted(() => {
 <template>
   <div class="app-container">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-8 mx-auto">
         <img :src="imgURL" alt="S_S" class="logo">
         <div v-if="isLoggedIn" class="header">
           <h2>Welcome to your account {{ userName }}!</h2>
@@ -112,7 +112,6 @@ onMounted(() => {
           </div>
         </div>
         <div v-for="(activities, day) in activityGroups" :key="day">
-          <!-- <h4>{{ day }}</h4> -->
           <ul class="list-group">
             <li v-for="activity in activities" :key="activity._id" class="list-group-item d-flex justify-content-between lh-condensed">
               <RouterLink :to="'/activity/' + activity._id">
@@ -140,11 +139,6 @@ onMounted(() => {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  display: flex;
 }
 
 .header {
@@ -154,9 +148,11 @@ onMounted(() => {
   white-space: nowrap;
 }
 .logo {
-    width: 600px;
+    width: 100%;
     padding: 10px;
     height: auto;
+    display: block; 
+    margin: 0 auto;
   }
 
 .activity-list {
@@ -191,8 +187,11 @@ onMounted(() => {
   margin-top: 20px;
 }
 .day {
-  max-width: 100px; 
-  justify-content: center
+  display: flex; /* Use flex container */
+  align-items: margin-left; /* Center items vertically */
+  justify-content: left; /* Center items horizontally */
+  max-width: 100px;
+  color: red;
 }
 .icon-image {
     width: 16px; 

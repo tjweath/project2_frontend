@@ -53,7 +53,7 @@ onMounted(checkSession)
     <div class="container">
       <div class="header">
         <img :src="imgURL" alt="S_S" class="logo">
-        <h2>Track your fitness journey by monitoring your regular activities</h2>
+        <h2>Track your fitness journey with your regular activities</h2>
       </div>
   
       <div class="features">
