@@ -122,7 +122,7 @@ onMounted(() => {
               </div>
               <div>
                 <button v-if="isLoggedIn" @click="deleteActivity(activity._id)" class="btn btn-sm btn-danger">
-                  <img src="@/assets/trash.png" alt="Delete Icon" class="icon-image"> 
+                  <img src="@/assets/trash2.png" alt="Delete Icon" class="icon-image"> 
                 </button>
                 <RouterLink v-if="isLoggedIn" :to="'/activity/update/' + activity._id" class="btn btn-sm btn-primary">Edit</RouterLink>
               </div>
@@ -191,7 +191,6 @@ onMounted(() => {
   align-items: margin-left; /* Center items vertically */
   justify-content: left; /* Center items horizontally */
   max-width: 100px;
-  color: red;
 }
 .icon-image {
     width: 16px; 
