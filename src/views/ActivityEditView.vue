@@ -11,7 +11,6 @@ const activityId = route.params.id
 const activity = ref({
     activity: '',
     day: '',
-    // completed: ''
 })
 
 const loadActivityData = () => {
@@ -51,8 +50,6 @@ onMounted(loadActivityData)
             <input type="text" name="activity" placeholder="Activity" v-model="activity.activity" required>
             <label for="day">Day *</label>
             <input type="text" author="day" placeholder="Day" v-model="activity.day" required>
-            <!-- <label for="completed">completed *</label>
-            <input type="checkbox" name="completed" v-model="activity.completed" required> -->
             <button @click="updateActivity">Update</button>
     </div>
 </template>

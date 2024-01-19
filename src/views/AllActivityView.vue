@@ -185,16 +185,22 @@ onMounted(() => {
 
 .new-activity {
   margin-top: 20px;
+  
 }
 .day {
-  display: flex; /* Use flex container */
-  align-items: margin-left; /* Center items vertically */
-  justify-content: left; /* Center items horizontally */
+  display: flex; 
+  align-items: margin-left; 
+  justify-content: left; 
   max-width: 100px;
+  color: rgb(11, 11, 11) !important;
 }
 .icon-image {
     width: 16px; 
     height: 16px; 
     margin-right: 5px; 
   }
+
+.list-group-item {
+  background-color: rgb(224, 226, 211);
+}
 </style>
